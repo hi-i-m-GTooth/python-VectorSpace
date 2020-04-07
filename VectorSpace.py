@@ -3,7 +3,9 @@ from Parser import Parser
 from tag import keepIt
 import tfidf
 import util
+import sys
 import os
+import argparse
 
 class VectorSpace:
     """ A algebraic model for representing text documents as vectors of identifiers. 
@@ -69,7 +71,7 @@ class VectorSpace:
         wordList = self.parser.tokenise(vocabularyString)
         wordList = self.parser.removeStopWords(wordList)
         uniqWordList = util.removeDuplicates(wordList)
-        IDFvector = [tfidf.idf(word,documents) for word in wordList]
+        IDFvector = [tfidf.idf(word,documents) for word in uniqWordList]
         return IDFvector
     
     
@@ -147,8 +149,12 @@ class VectorSpace:
 
 
 if __name__ == '__main__':
-    #test data
-    query = ["drill", "wood", "sharp"]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-q", "--query", help="setting query")
+    args = parser.parse_args()
+    if args.query: # if query is empty then exit
+        query = args.query.split(' ')
+        print("Your Query is: "+str(query))
 
     documents = []
     doc_ids = []
@@ -157,11 +163,11 @@ if __name__ == '__main__':
         with open(os.path.join("./doc",file)) as f:
             documents.append(f.read())
             doc_ids.append(file[:file.find('.')])
+
+######################### Project 1 ############################
     
     vectorSpace = VectorSpace(documents)
 
-######################### Project 1 ############################
-    """
     # Term Frequency (TF) Weighting + Cosine Similarity
     search_rlt = vectorSpace.search(query,"cosine")
     
@@ -182,7 +188,7 @@ if __name__ == '__main__':
         index = search_rlt.index(min(search_rlt))
         max_value = search_rlt[index]
         print("%-7s %10f"%(doc_ids[index],round(max_value,6)))
-        search_rlt[index]=max(search_rlt)"""
+        search_rlt[index]=max(search_rlt)
 
    
 
@@ -195,7 +201,7 @@ if __name__ == '__main__':
     print("%-7s %10s"%("DocID", "Score"))
     for i in range(0,5):
         index = search_rlt.index(max(search_rlt))
-        if i == 0:
+        if i == 0: # feed back for Method 5
             feedback_index = index
         max_value = search_rlt[index]
         print("%-7s %10f"%(doc_ids[index],round(max_value,6)))
