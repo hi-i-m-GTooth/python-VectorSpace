@@ -71,7 +71,7 @@ class VectorSpace:
         wordList = self.parser.tokenise(vocabularyString)
         wordList = self.parser.removeStopWords(wordList)
         uniqWordList = util.removeDuplicates(wordList)
-        IDFvector = [tfidf.idf(word,documents) for word in uniqWordList]
+        IDFvector = [tfidf.idf(word,documentList) for word in uniqWordList]
         return IDFvector
     
     
@@ -166,7 +166,7 @@ if __name__ == '__main__':
 
 ######################### Project 1 ############################
     
-    vectorSpace = VectorSpace(documents)
+    '''vectorSpace = VectorSpace(documents)
 
     # Term Frequency (TF) Weighting + Cosine Similarity
     search_rlt = vectorSpace.search(query,"cosine")
@@ -188,7 +188,7 @@ if __name__ == '__main__':
         index = search_rlt.index(min(search_rlt))
         max_value = search_rlt[index]
         print("%-7s %10f"%(doc_ids[index],round(max_value,6)))
-        search_rlt[index]=max(search_rlt)
+        search_rlt[index]=max(search_rlt)'''
 
    
 
