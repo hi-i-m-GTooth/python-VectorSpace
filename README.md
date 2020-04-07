@@ -1,7 +1,7 @@
 # python-VectorSpace
 implement Vector Space
 
-## This project is based on Prof. Tsai (Victor Tsai)'s program.
+## This project is based on Prof. Tsai (Victor Tsai)'s program
 
 ## Before Starting
   #### Main Program
