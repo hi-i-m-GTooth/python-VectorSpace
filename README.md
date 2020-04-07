@@ -11,7 +11,7 @@ implement Vector Space
     * **Method 3:** TF-IDF Weighting + Cosine Similarity
     * **Method 4:** TF-IDF Weighting + Euclidean Distance
     * **Method 5:** Relevance Feedback *(Pseudo Feedback is the Nouns and the Verbs of the first document in **Method 3**)*
-  #### Words pre-processing
+  #### Words Pre-processing
   * **Parser.py:** do "remove stopwords", "remove nasty words" and "break string into tokens and stem words".
   * **PorterStemmer.py:** stem the words.
   * **tag.py:** use NLTK for grammatical tagging.
