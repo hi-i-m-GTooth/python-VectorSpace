@@ -22,7 +22,11 @@ implement Vector Space
   * **util.py:** remove duplicate words from a list, calculate "cosine" and "euclid" similarity.
 
 ## Getting Started
-Use *-q* or *--query* to input Query string. Note that **an empty string** is not allowed.
+1. Unzip doc.zip to create **doc** directory   
+```bash
+$ unzip dic.zip
+```
+2. Use *-q* or *--query* to input Query string. Note that **an empty string** is not allowed.
 ```bash
 $ python VectorSpace.py --query "drill wood"
 ```
